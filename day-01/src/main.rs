@@ -36,15 +36,23 @@ fn main() {
 		}
 	}
 	
-	let most_calories = { 
-		let mut local_high = 0;
-		for elf in elf_vector {
-			if elf.total_calories > local_high {
-				local_high = elf.total_calories
-			}
-		}
-		local_high
-	};
+	let mut first_place = 0;
+	let mut second_place = 0;
+	let mut third_place = 0;
 	
-	println!("{}", most_calories);
+	for elf in elf_vector {
+		if elf.total_calories > first_place {
+			third_place = second_place;
+			second_place = first_place;
+			first_place = elf.total_calories;
+		} else if elf.total_calories > second_place {
+			third_place = second_place;
+			second_place = elf.total_calories;
+		} else if elf.total_calories > third_place {
+			third_place = elf.total_calories;
+		}
+	}
+
+	let first_three_total = first_place + second_place + third_place;
+	println!("{}", first_three_total);
 }

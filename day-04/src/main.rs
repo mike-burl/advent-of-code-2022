@@ -18,12 +18,20 @@ fn main() {
 		let elf1_upper : i32 = elf1[1].parse().unwrap();
 		let elf2_lower : i32 = elf2[0].parse().unwrap();
 		let elf2_upper : i32 = elf2[1].parse().unwrap();
-		// Check if elf1 numbers are outside of elf2's
-		if elf1_lower <= elf2_lower && elf1_upper >= elf2_upper {
+		// Check if elf1 lower is inside elf2
+		if elf1_lower >= elf2_lower && elf1_lower <= elf2_upper {
 			total_overlaps = total_overlaps + 1;
 		}
-		// If miss, check if elf2 numbers are outside of elf1's
-		else if elf2_lower <= elf1_lower && elf2_upper >= elf1_upper {
+		// If miss, check if elf1 upper is inside elf2
+		else if elf1_upper >= elf2_lower && elf1_upper <= elf2_upper {
+			total_overlaps = total_overlaps + 1;
+		}
+		// If miss, check if elf2 lower is inside elf1
+		else if elf2_lower >= elf1_lower && elf2_lower <= elf1_upper {
+			total_overlaps = total_overlaps + 1;
+		}
+		// If miss, check if elf2 upper is inside elf1
+		else if elf2_upper >= elf1_lower && elf2_upper <= elf1_upper {
 			total_overlaps = total_overlaps + 1;
 		}
 		else {

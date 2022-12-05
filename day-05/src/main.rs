@@ -33,8 +33,9 @@ fn main() {
 			let crate_char : char = stacks[source].pop().unwrap();
 			temp_vec.push(crate_char);
 		}
-		for temp_char in temp_vec {
-			stacks[target].push(temp_char);
+		while temp_vec.len() > 0 {
+			let crate_char : char = temp_vec.pop().unwrap();
+			stacks[target].push(crate_char);
 		}
 	}
 	

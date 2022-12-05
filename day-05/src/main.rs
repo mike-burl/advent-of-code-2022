@@ -28,9 +28,13 @@ fn main() {
 		let move_count : i32 = move_vector[0].parse().unwrap();
 		let source : usize = move_vector[1].parse().unwrap();
 		let target : usize = move_vector[2].parse().unwrap();
-		for count in 0..move_count {
+		let mut temp_vec : Vec<char> = vec![];
+		for _count in 0..move_count {
 			let crate_char : char = stacks[source].pop().unwrap();
-			stacks[target].push(crate_char);
+			temp_vec.push(crate_char);
+		}
+		for temp_char in temp_vec {
+			stacks[target].push(temp_char);
 		}
 	}
 	
